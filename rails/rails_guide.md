@@ -77,9 +77,17 @@ Now go to app/views/articles/index.html.erb and replace its content with:
 
 In your terminal start the server in your directory
 ```
-rails server
+$ rails server
 ```
 Now you can go into a web browser and see your hello, rails message with the following address: http://localhost:3000/articles
 
+## 3. Models
+Model (Ruby Class): used to represent data. Models can interact with the application's database through a feature of rails called active record.
+
+In your terminal run the following command. This will create several files
+```
+$ rails generate model Article
+```
+IMPORTANT: Model names are singular, because an instantiated model represents a single data record. 
 
 
