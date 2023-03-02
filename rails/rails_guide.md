@@ -21,6 +21,11 @@ Navigate into your new directory with the followign command
 cd name
 ```
 
+Next, create your database. Without this the server will not run. 
+```
+rails db:create
+```
+
 At this point you should create a GitHub repository and push changes to your GitHub.
 
 ## 2. Routes & Controllers
@@ -69,4 +74,12 @@ Now go to app/views/articles/index.html.erb and replace its content with:
 ```
 <h1>Hello, Rails</h1>
 ```
+
+In your terminal start the server in your directory
+```
+rails server
+```
+Now you can go into a web browser and see your hello, rails message with the following address: http://localhost:3000/articles
+
+
 
