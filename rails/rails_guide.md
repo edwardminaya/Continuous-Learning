@@ -134,6 +134,32 @@ article
 ```
 Article.all
 ```
+## 5. Views
+In your directory app/controller/articles_controllers.rb update the action index with the following code
+```
+class ArticlesController < ApplicationController
+  def index
+    @articles = Article.all
+  end
+end
+```
+Then in your app/views/articles/index.html.erb file replace the content with the following code.
+```
+<h1>Articles</h1>
 
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= article.title %>
+    </li>
+  <% end %>
+</ul>
+```
+This files is a mixture of HTML and ERB. ERB is a templating system that evaluates Ruby code embedded in a document. 
 
+<% %> This tag means 'evaluate the enclosed Ruby code.
 
+<%= %> This tag means 'evaluate the enclosed Ruby code and out put the value it returns
+
+## Conclusion
+This does not include the jbuillder and the tutorial continues through each CRUD (Create, Read, Update, Destroy) action by updating the routs, controllers and views. This was a great way to learn about how to start a new rails application. 
