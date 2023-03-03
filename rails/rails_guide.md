@@ -6,7 +6,6 @@ https://guides.rubyonrails.org/getting_started.html
 Assumption: Already have rails and ruby installed on your machine
 
 ## 1. Creating A New Application
-
 The first step is to create a rails application with the following command in your terminal.
 Name will be the actual name of your application
 
@@ -111,6 +110,29 @@ create_table: specifies how the articles table should be constructed. By default
 The table structure was defined but not created. To create the table run the following command line in your terminal
 ```
 $ rails db:migrate
+```
+
+## 4. Using a Model to Interact with the Database (Terminal)
+Similar to irb, rails uses the console. To launch the console run the following code in your terminal
+```
+$ rails console
+```
+Here we can initiate a new Article object. Run the following code in your terminal
+```
+article = Article.new(title: "Hello Rails", body: "I am on rails!")
+```
+This is essentially assigning the variable, article, to a new instance of the class Article that requires two attributes we initiated when we created the model (title and body). 
+
+Also note that this created an instance but did not save it. To save the object in the database run the following command in your terminal
+```
+article.save
+```
+The object, article, has now been saved and inserted to our table. Like we mentioned before it will get an id and since this is the first object inserted it will have an id of 1. To see the table you can run either of the following commands in your terminal
+```
+article
+```
+```
+Article.all
 ```
 
 
