@@ -82,12 +82,36 @@ $ rails server
 Now you can go into a web browser and see your hello, rails message with the following address: http://localhost:3000/articles
 
 ## 3. Models
-Model (Ruby Class): used to represent data. Models can interact with the application's database through a feature of rails called active record.
+Model (Ruby Class): used to represent data. Models can interact with the application's database through a feature of rails called active record. Models can create, read, update and destroy records (CRUD). 
 
 In your terminal run the following command. This will create several files
 ```
-$ rails generate model Article
+$ rails generate model Article title:string body:text
 ```
 IMPORTANT: Model names are singular, because an instantiated model represents a single data record. 
+
+title and string are attributes and you are setting the class type (string, integer, boolean, text, etc.)
+
+Migrations are used to alter the structure of an application's database. Go into your db/migrate folder and you'll find the new migration file. The code inside should look like this
+```
+class CreateArticles < ActiveRecord::Migration[7.0]
+  def change
+    create_table :articles do |t|
+      t.string :title
+      t.text :body
+
+      t.timestamps
+    end
+  end
+end
+```
+
+create_table: specifies how the articles table should be constructed. By default this method adds an id column as an auto-incrementing primary key. Inside the block two columns are defined: title and body, which were created with the terminal command to generate the model and attributes. The last line of the block is called t.timestamps. By default two additional columns named created_at and updated_at were created. Rails manages these for us. 
+
+The table structure was defined but not created. To create the table run the following command line in your terminal
+```
+$ rails db:migrate
+```
+
 
 
