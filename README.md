@@ -20,11 +20,13 @@
 + [Rails Guide](rails/rails_guide.md)
 
 ### Ruby
-+ [mapping method](ruby/method_mapping.md)
-+ [values method](ruby/method_values.md)
++ [Mapping method](ruby/method_mapping.md)
++ [Values method](ruby/method_values.md)
 
 ### Terminal
++ [Command Shortcuts](terminal/aliases.md)
 + [Git Commands](terminal/terminal_command_git.md)
+
 
 
 
