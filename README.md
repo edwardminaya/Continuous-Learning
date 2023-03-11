@@ -1,6 +1,9 @@
 # Continuous Learning
-## Collection of things I've learned in various topics, technologies and skills in software development.
+I'm a former industrial engineer making a career transition from manufacturing into software engineering. This is a collection of journals and things I've learned across a variety of languages and technologies. 
+[LinkedIn](https://www.linkedin.com/in/edminaya/)
 
-### Writing in md files
-Learning how to write in github
-https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/quickstart-for-writing-on-github
+#### Deliberate Practice
+[Ruby](https://github.com/edwardminaya/deliberate-practice-ruby)
+
+---
+
