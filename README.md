@@ -4,7 +4,7 @@
 [LinkedIn](https://www.linkedin.com/in/edminaya/)
 
 #### Deliberate Practice & Work Journal
-+ [Journal](journal/)
++ [Journal](https://github.com/edwardminaya/continuous-learning/tree/main/Journal)
 + [Ruby](https://github.com/edwardminaya/deliberate-practice-ruby)
 
 ---
