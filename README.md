@@ -20,6 +20,7 @@
 + [Rails Guide](rails/rails_guide.md)
 
 ### Ruby
++ [Merge method](ruby/merge_method.md)
 + [Mapping method](ruby/method_mapping.md)
 + [Values method](ruby/method_values.md)
 
