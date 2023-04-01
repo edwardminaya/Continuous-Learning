@@ -7,6 +7,7 @@
 #### Deliberate Practice & Work Journal
 
 - [Journal](https://github.com/edwardminaya/continuous-learning/tree/main/Journal)
+- [LeetCode](https://leetcode.com/eminaya/)
 - [Ruby](https://github.com/edwardminaya/deliberate-practice-ruby)
 - [JavaScript](https://github.com/edwardminaya/deliberate-practice-javascript)
 
