@@ -4,12 +4,17 @@
 
 [LinkedIn](https://www.linkedin.com/in/edminaya/)
 
-#### Deliberate Practice & Work Journal
+#### Work Journal
 
 - [Journal](https://github.com/edwardminaya/continuous-learning/tree/main/Journal)
+
+### Deliberate Practice
+
 - [LeetCode](https://leetcode.com/eminaya/)
+- [HackerRank](https://www.hackerrank.com/eminaya49)
 - [Ruby](https://github.com/edwardminaya/deliberate-practice-ruby)
 - [JavaScript](https://github.com/edwardminaya/deliberate-practice-javascript)
+- [SQL](https://github.com/edwardminaya/deliberate-practice-sql)
 
 ---
 
