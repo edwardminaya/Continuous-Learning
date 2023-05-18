@@ -23,6 +23,7 @@
 
 - [Rails](#Rails)
 - [Ruby](#Ruby)
+- [Terminal](#terminal)
 
 ---
 
