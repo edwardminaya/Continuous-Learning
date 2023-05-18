@@ -15,6 +15,7 @@
 - [Ruby](https://github.com/edwardminaya/deliberate-practice-ruby)
 - [JavaScript](https://github.com/edwardminaya/deliberate-practice-javascript)
 - [SQL](https://github.com/edwardminaya/deliberate-practice-sql)
+- [Python](https://github.com/edwardminaya/deliberate-practice-python)
 
 ---
 
