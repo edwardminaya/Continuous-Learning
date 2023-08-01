@@ -96,7 +96,87 @@ connection = PG.connect(
 )
 ```
 
-Explain how you would execute a SQL query to retrieve data from a specific table in the database.
+### Explain how you would execute a SQL query to retrieve data from a specific table in the database.
+
+Python -> SQLite
+
+```python
+import sqlite3
+
+# Connect to SQLite3 database
+connection = sqlite3.connect('example.db')
+
+# Create a cursor
+cursor = connection.cursor()
+
+# Execute a SQL query to retrieve data from a specific table
+query = "SELECT * FROM your_table_name"
+cursor.execute(query)
+
+# Fetch the results (if needed)
+results = cursor.fetchall()
+
+# Close the cursor & databse connection
+cursor.close()
+connection.close()
+```
+
+Python -> MySQL
+
+```python
+import mysql.connector
+
+# Connect to a MySQL database
+connection = mysql.connector.connect(
+  host='your_mysql_host',
+  user='your_username',
+  password='your_password',
+  database='your_database_name'
+)
+
+# Create a cursor
+cursor = connection.cursor()
+
+# Execute a SQL query to retrieve data from a specific database
+query = "SELECT * FROM your_table_name"
+cursor.execute(query)
+
+# Fetch the results (if needed)
+results = cursor.fetchall()
+
+# Close the cursor and database connection
+cursor.close()
+connection.close()
+```
+
+Python -> PostgreSQL
+
+```python
+import psycopg2
+
+# Connect to PostgreSQL database
+connection = psycopg2.connect(
+  host='your_postgres_host',
+  databse='your_database_name',
+  user='your_username',
+  password='your_password'
+)
+
+# Create a cursor
+cursor = connection.cursor()
+
+# Execute a SQL query to retrieve data from a specific table
+query = "SELECT * FROM your_table_name"
+cursor.execute(query)
+
+# Fetch the results (if needed)
+results = cursor.fetchall()
+
+# Close the cursor and database connection
+cursor.close()
+connection.close()
+```
+
 Can you demonstrate how to read the content of a SQL table?
 
 #### HTTP POST requests and JSON API
