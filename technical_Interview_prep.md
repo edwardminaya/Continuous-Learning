@@ -22,6 +22,15 @@ Write code to pull data from a SQL database and peform HTTP POST requests to a J
 
 ##### How would you connect to a SQL database?
 
+SQLite
+
+```
+import sqlite3
+
+# Connect to SQLite3 database
+connection = sqlite3.connect('example.db')
+```
+
 Explain how you would execute a SQL query to retrieve data from a specific table in the database.
 Can you demonstrate how to read the content of a SQL table?
 
