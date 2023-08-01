@@ -121,6 +121,24 @@ cursor.close()
 connection.close()
 ```
 
+Ruby -> SQLite3
+
+```ruby
+require 'sqlite3'
+
+# Connect to SQLite3 database
+connection = SQLite3::Database.new('example.db')
+
+# Execute a SQL query to retrieve data from a specific table
+query = "SELECT * FROM your_table_name"
+results = connection.execute(query)
+
+# Print the results
+results.each do |row|
+  puts row
+end
+```
+
 Python -> MySQL
 
 ```python
@@ -147,6 +165,29 @@ results = cursor.fetchall()
 # Close the cursor and database connection
 cursor.close()
 connection.close()
+```
+
+Ruby -> MySQL
+
+```ruby
+require 'mysql2'
+
+# Connect to a MySQL database
+client = Mysql2::Client.new(
+  host: 'your_mysql_host',
+  username: 'your_username',
+  password: 'your_password',
+  database: 'your_database_name'
+)
+
+# Execute a SQL query to retrieve data from a specific table
+query = "SELECT * FROM your_table_name"
+results = client.query(query)
+
+# Print the results
+results.each do |row|
+  puts row
+end
 ```
 
 Python -> PostgreSQL
@@ -177,7 +218,30 @@ cursor.close()
 connection.close()
 ```
 
-Can you demonstrate how to read the content of a SQL table?
+Ruby -> PostgreSQL
+
+```ruby
+require 'pg'
+
+# Connect to a PostgresSQL database
+connection = PG.connect(
+  host: 'your_postgres_host',
+  dbname: 'your_database_name',
+  user: 'your_username',
+  password: 'your_password'
+)
+
+# Execute a SQL query to retrieve data from a specific table
+query = "SELECT * FROM your_table_name"
+results = connection.exec(query)
+
+# Print the results
+results.each do |row|
+  puts row
+end
+```
+
+### Can you demonstrate how to read the content of a SQL table?
 
 #### HTTP POST requests and JSON API
 
