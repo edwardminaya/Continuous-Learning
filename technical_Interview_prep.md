@@ -22,13 +22,41 @@ Write code to pull data from a SQL database and peform HTTP POST requests to a J
 
 ##### How would you connect to a SQL database?
 
-SQLite
+Python -> SQLite
 
-```
+```python
 import sqlite3
 
 # Connect to SQLite3 database
 connection = sqlite3.connect('example.db')
+```
+
+Python -> MySQL
+
+```python
+import mysql.connector
+
+# Connect to a MySQL database
+connection = mysql.connector.connect(
+  host='your_mysql_host',
+  user='your_username',
+  password='your_password',
+  database='your_database_name'
+)
+```
+
+Python -> PostgreSQL
+
+```python
+import psycopg2
+
+# Connect to PostgreSQL database
+connection = psycopg2.connect(
+  host='your_posgres_host',
+  databse='your_database_name',
+  user='your_username',
+  password='your_password'
+)
 ```
 
 Explain how you would execute a SQL query to retrieve data from a specific table in the database.
