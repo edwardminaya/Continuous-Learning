@@ -20,7 +20,7 @@ Write code to pull data from a SQL database and peform HTTP POST requests to a J
 
 ## SQL Database Interaction
 
-##### How would you connect to a SQL database?
+### How would you connect to a SQL database?
 
 Python -> SQLite
 
@@ -29,6 +29,15 @@ import sqlite3
 
 # Connect to SQLite3 database
 connection = sqlite3.connect('example.db')
+```
+
+Ruby -> SQLite
+
+```ruby
+require 'sqlite3'
+
+# Connect to SQLite3 database
+connection = SQLite3::Database.new('example.db')
 ```
 
 Python -> MySQL
@@ -45,6 +54,20 @@ connection = mysql.connector.connect(
 )
 ```
 
+Ruby -> MySQL
+
+```ruby
+require 'mysql2'
+
+#Connect to a MySQL database
+client = Mysql2::Client.new(
+  host: 'your_mysql_host',
+  username: 'your_username',
+  password: 'your_password',
+  databse: 'your_database_name'
+)
+```
+
 Python -> PostgreSQL
 
 ```python
@@ -52,10 +75,24 @@ import psycopg2
 
 # Connect to PostgreSQL database
 connection = psycopg2.connect(
-  host='your_posgres_host',
+  host='your_postgres_host',
   databse='your_database_name',
   user='your_username',
   password='your_password'
+)
+```
+
+Ruby -> PostgreSQL
+
+```ruby
+require 'pg'
+
+# Connect to a PostgreSQL databse
+connection = PG.connect(
+  host: 'your_postgres_host',
+  dbname: 'your_databse_name',
+  user: 'your_username',
+  password: 'your_password'
 )
 ```
 
