@@ -22,6 +22,8 @@ Write code to pull data from a SQL database and peform HTTP POST requests to a J
 
 ### Explain how you would connect to a SQL database, execute a SQL query to retrieve data from a specific table in the database and read the content.
 
+cursor() - The curosor method in Python is used to create a cursor object from a database connection. This cursor object is then used to execute SQL queries and fetch the results
+
 Python -> SQLite
 
 ```python
@@ -188,7 +190,73 @@ connection.close
 
 # HTTP POST requests and JSON API
 
-How do you perform an HTTP POST request?
+### How do you perform an HTTP POST request?
+
+Python
+
+```python
+# First, ensure you have 'requests' library installed.
+# Import the necessary libraries in your Python script.
+import requests
+
+# Define the URL of the JSON API endpoint where you want to send the POST request
+url = 'https://api.example.com/data'
+
+# Prepare the data you want to send in the request body. This data should be in Python dictionary format
+data = {
+  'key1': 'value1',
+  'key2': 'value2',
+}
+
+# Perform the HTTP POST request using the request.post() method
+response = requests.post(url, json=data)
+
+# Check the response to see if the request was successful and process the response data if needed
+if response.status_code == 200:
+  print('POST request was successful')
+  print('Response content: ')
+  print(respons.json()) # Get the response data in JSON format
+else:
+  print(f"POST request failed with status code {response.status_code}")
+```
+
+Ruby
+
+```ruby
+# Net::HTTP is part of the Ruby standard library
+# Import the necessary libraries in your Ruby script
+require 'net/http'
+require 'json'
+
+# Define the URL of the JSON API endpoint where you want to send the POST request
+url = URI.parse('https://api.example.com/data')
+
+# Prepare the data you want to send in the request body. This data should be in a Ruby hash format
+data = {
+  'key1' => 'value1',
+  'key2' => 'value2'
+}
+
+# Creat an HTTP POST request with the JSON data in the request body
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = (url.scheme == 'https')
+
+request = Net::HTTP::Post.new(url.path, { 'Content-Type' => 'application/json'})
+request.body = data.to_json
+
+# Perform the HTTP OST request and get the response
+response = http.request(request)
+
+# Check the response to see if the request was successful and process the response dat if needed
+if response.code.to_i == 200
+  puts "POST request was successful"
+  puts "Response content: "
+  puts JSON.parse(response.body) # Get the response data as a Ruby hash
+else
+  puts "POST request failed with status code #{response.code}"
+end
+```
+
 Can you explain the difference between GET and POST requests in the context of API calls?
 When making an HTTP POST request to a JSON API, how would you send JSON data as part of the request body?
 In the case the API responds with an error status code, how would you handle error responses?
