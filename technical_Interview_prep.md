@@ -341,6 +341,34 @@ end
 
 ### In the case the API responds with an error status code, how would you handle error responses?
 
+It's essential to handle error responses appropiately to provide meaningful feedback to users to take appropiate action in your application.
+
+Python
+
+```python
+# Check for successful response (2xx status code)
+if response.status_code / 100 == 2:
+  print('POST request was successful.')
+  print(response.json()) # Get the response data in JSON format
+else:
+  #Handle error responses here
+  print(f"POST request failed with status code {response.status_code}")
+  print("Error message: ", response.json())
+```
+
+Ruby
+
+```ruby
+if response.code.to_i / 100 == 2
+  puts 'POST request was successful.'
+  puts JSON.parse(response.body)
+else
+  # Handle error responses here
+  puts "POST request failed with status code #{response.code}"
+  puts "Error message: ", JSON.parse(response.body)
+end
+```
+
 # Integrating SQL Database and JSON API
 
 Suppose you have data stored in a SQL database. How would you retrieve that data and send it to a JSON API?
