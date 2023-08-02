@@ -215,7 +215,7 @@ response = requests.post(url, json=data)
 if response.status_code == 200:
   print('POST request was successful')
   print('Response content: ')
-  print(respons.json()) # Get the response data in JSON format
+  print(response.json()) # Get the response data in JSON format
 else:
   print(f"POST request failed with status code {response.status_code}")
 ```
@@ -257,9 +257,89 @@ else
 end
 ```
 
-Can you explain the difference between GET and POST requests in the context of API calls?
-When making an HTTP POST request to a JSON API, how would you send JSON data as part of the request body?
-In the case the API responds with an error status code, how would you handle error responses?
+### Can you explain the difference between GET and POST requests in the context of API calls?
+
+GET requests are used for retrieving data from the server without changing anything on the server, and they typically include data in the URL's query parameters. On the other hand, POST requests are used for sending data to the server to create or modify resources, and they include data in the request body.
+
+### When making an HTTP POST request to a JSON API, how would you send JSON data as part of the request body?
+
+You need to specify the 'Content-Type' headers as 'application/json' and encode your data in JSON format. You can achieve this using the 'requests' library in Python or 'Net::HTTP' library in Ruby.
+
+Python
+
+```python
+import requests
+import json
+
+url = 'https://api.example.com/data'
+
+# Data to be sent in the request body (as a Python dictionary)
+data = {
+  'key1': 'value1',
+  'key2': 'value2'
+}
+
+# Convert the data to JSON format
+json_data = json.dumps(data)
+
+# Set the headers to indicate JSON data is in the request body
+headers = {
+  'Content-Type': 'application/json'
+}
+
+# Perform the HTTP POST request with JSON data in the request boyd
+response = requests.post(url, data=json_data, headers=headers)
+
+# Process the response
+if response.status_code == 200
+  print('POST request was successful.')
+  print(response.json())
+else:
+  print(f"POST request failed with status code {response.status_code}")
+```
+
+Ruby
+
+```ruby
+require 'net/http'
+require 'json'
+
+url = URI.parse('https://api.example.com/data')
+
+# Data to be sent in the reqest body (as a Ruby hash)
+data = {
+  'key1' => 'value1',
+  'key2' => 'value2'
+}
+
+# Convert the data to JSON format
+json_data = data.to_json
+
+# Set the headers to indicate JSON data in the request body
+headers = {
+  'Content-Type' => 'application/json'
+}
+
+# Create an HTTP POST request with JSON data in the request body
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = (url.scheme == 'https')
+
+request = Net::HTTP::Post.new(url.path, headers)
+request.body = json_data
+
+# Perform the HTTP POST request
+response = http.request(request)
+
+# Process the response
+if response.code.to_i == 200
+  puts "POST request was succesful"
+  puts JSON.parse(response.body)
+else
+  puts "POST request failed with status code #{response.code}"
+end
+```
+
+### In the case the API responds with an error status code, how would you handle error responses?
 
 # Integrating SQL Database and JSON API
 
