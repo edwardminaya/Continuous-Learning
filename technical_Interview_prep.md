@@ -371,7 +371,236 @@ end
 
 # Integrating SQL Database and JSON API
 
-Suppose you have data stored in a SQL database. How would you retrieve that data and send it to a JSON API?
+### Suppose you have data stored in a SQL database. How would you retrieve that data and send it to a JSON API?
+
+Python -> SQLite3
+
+```python
+import requests
+import json
+import sqlite3
+
+# Establish connection to SQLite3 database
+conn = sqlite3.connect('your_database.db')
+cursor = conn.cursor()
+
+# Fetch data from database
+query = "SELECT * FROM your_table_name"
+cursor.execute(query)
+results = cursor.fetchall()
+
+# Convert data to JSON format
+json_data = json.dumps(results)
+
+# Send JSON data to JSON API
+url = 'https://api.example.com/data'
+headers = {
+  'Content-Type': 'application/json'
+}
+response = request.post(url, data=json_data, headers=headers)
+
+# Handle API request response
+if response.status_code / 100 == 2:
+  print('Data sent to API successfully')
+  print(response.json())
+else:
+  print(f"Failed to send data to API. Status code: {response.status_code}")
+```
+
+Python -> MySQL
+
+```python
+import requests
+import json
+import mysql.connector
+
+# Establish connection to MySQL database
+conn = mysql.connector.connect(
+  host='your_mysql_host',
+  user='your_mysql_user',
+  password='your_mysql_password',
+  database='your_mysql_database',
+)
+cursor = conn.cursor()
+
+# Fetch data from database
+query = "SELECT * FROM your_table_name"
+cursor.execute(query)
+results = cursor.fetchall()
+
+# Convert data to JSON format
+json_data = json_dumps(results)
+
+# Send JSON data to JSON API
+url = "https://api.example.com/data"
+headers = {
+  'Content-Type': 'application/json'
+}
+response = requests.post(url, data=json_data, headers=headers)
+
+# Handle API request response
+if response.status_code / 100 == 2:
+  print('Data sent to API successfully')
+  print(response.json())
+else:
+  print(f"Failed to sen data to API. Status code: {response.status_code}")
+```
+
+Python -> PostgreSQL
+
+```python
+import requests
+import json
+import psycopg2
+
+# Establish connection to PostgreSQL database
+conn = psycopg2.connect(
+  host='your_host_name',
+  database='your_database_name',
+  user='your_username',
+  password='your_password'
+)
+cursor = conn.cursor()
+
+# Fetch data from database
+query = "SELECT * FROM your_table_name"
+cursor.execute(query)
+results = cursor.fetchall()
+
+# Convert data to JSON format
+json_data = json.dumps(results)
+
+# Send JSON data to JSON API
+url = "https://api.example.com/data"
+headers = {
+  'Content-Type': 'application/json'
+}
+response = requests.post(url, data=json_data, headers=headers)
+
+if response.status_code / 100 == 2:
+  print('Data sent to API successfully')
+  print(response.json())
+else:
+  print(f"Failed to send data to API. Status code: {response.status_code}")
+```
+
+Ruby -> SQLite3
+
+```ruby
+require 'sqlite3'
+require 'json'
+require 'net/http'
+
+# Establish connection to SQLite3 database
+db = SQLite3::Database.new('your_database.db')
+
+# Fetch data from database
+query = "SELECT * FROM your_table_name"
+results = db.execute(query)
+
+# Convert data to JSON format
+json_data = results.to_json
+
+# Send JSON data to JSON API
+url = URI.parse('https://api.example.com/data')
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = (url.scheme == 'https')
+
+request = Net::HTTP::Post.new(url.path, { 'Content-Type' => 'application/json'})
+request.body = json_data
+response = http.request(request)
+
+# Handle API request response
+if response.code.to_i / 100 == 2
+  puts 'Data sent to API successfull'
+  puts JSON.parse(response.body)
+else
+  puts "Failed to send data to API. Status code: #{response.code}"
+end
+```
+
+Ruby -> MySQL
+
+```ruby
+require 'mysql2'
+require 'json'
+require 'net/http'
+
+# Establish connection to MySQL database
+client = Mysql2::Client.new(
+  host: 'your_mysql_host',
+  username: 'your_mysql_user',
+  password: 'your_mysql_password',
+  database: 'your_database'
+)
+
+# Fetch data from database
+query = "SELECT * FROM your_table_name"
+results = client.query(query).to_a
+
+# Convert data to JSON format
+json_data = results.to_json
+
+# Send JSON data to JSON API
+url = URI.parse('https://api.example.com/data')
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = (url.scheme == 'https')
+
+request = Net::HTTP::Post.new(url.path, { 'Content-Type' => 'application/json' })
+request.body = json_data
+
+response = http.request(request)
+
+# Handle API request response
+if response.code.to_i / 100 == 2
+  puts 'Data sent to API successfully.'
+  puts JSON.parse(response.body)
+else
+  puts "Failed to send data to API. Status code: #{response.code}"
+end
+```
+
+Ruby -> PostgreSQL
+
+```ruby
+require 'pg'
+require 'json'
+require 'net/http'
+
+# Establish connection to PostgreSQL database
+conn = PG.connect(
+  host: 'your_postgres_host',
+  user: 'your_postgres_user',
+  password: 'your_postgres_password',
+  dbname: 'your_database'
+)
+
+# Fetch data from database
+query = "SELECT * FROM your_table_name"
+results = conn.exec(query).to_a
+
+# Convert data to JSON format
+json_data = results.to_json
+
+# Send JSON data to JSON API
+url = URI.parse('https://api.example.com/data')
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = (url.scheme == 'https')
+
+request = Net::HTTP::Post.new(url.path, { 'Content-Type' => 'application/json' })
+request.body = json_data
+
+response = http.request(request)
+
+# Handle API request response
+if response.code.to_i / 100 == 2
+  puts 'Data sent to API successfully.'
+  puts JSON.parse(response.body)
+else
+  puts "Failed to send data to API. Status code: #{response.code}"
+end
+```
+
 When pulling data from a SQL database, how would you ensure the data is in the correct format to be sent to a JSON API?
 How might you handle a large dataset when pulling data from the database and processing it before sending it to the API?
 
