@@ -24,7 +24,7 @@ Write code to pull data from a SQL database and peform HTTP POST requests to a J
 
 cursor() - The curosor method in Python is used to create a cursor object from a database connection. This cursor object is then used to execute SQL queries and fetch the results
 
-Python -> SQLite
+Python -> SQLite:
 
 ```python
 import sqlite3
@@ -668,6 +668,51 @@ except json.JSONDecodeError as e:
 # Now you can send the validated JSON data to the JSON API
 ```
 
+Ruby -> PostgreSQL
+
+```ruby
+require 'pg'
+require 'json'
+
+# Establish connection to PostgreSQL database
+conn = PG.connect(
+  host: 'your_host_name',
+  user: 'your_user_name',
+  password: 'your_password',
+  database: 'your_database_name'
+)
+
+# Fetch the data from the database
+query = "SELECT * FROM your_table_name"
+results = conn.exec(query)
+data_from_database = result.values
+
+# Convert data to JSON-compatible data structure
+json_data = []
+data_from_database.each do |row|
+  record = {
+    id: row[0].to_i,
+    name: row[1],
+    age: row[2].to_i,
+    # ... Add other fields as needed
+  }
+  json_data << record
+end
+
+# Serialize the data to a JSON-formatted string
+json_string = JSON.generate(json_data)
+
+# Optionally validate the generated JSON data
+begin
+  validated_date = JSON.parse(json_string)
+  puts 'JSON data is valide'
+rescue JSON::ParserError => e
+  puts 'JSON data is not valid: ', e.message
+end
+
+# Now you can send the JSON data to the JSON API
+```
+
 ### How might you handle a large dataset when pulling data from the database and processing it before sending it to the API?
 
 Use Pagination: Instead of fetching the entire dataset at once, consider using pagination to retrieve data in smaller chunks. This way, you can process and send one chunk at a time, reducing memory usage and processing load.
@@ -692,11 +737,47 @@ Monitor Resource Usage: Keep track of memory usage, CPU utilization, and network
 
 # Error Handling and Data Validation
 
-How would you handle exceptions and errors that may occur during the process of making API requests or interacting with the SQL database?
-What kind of data validation would you consider implementing when pulling data from the database and preparing it for the API request?
-In case the API response contains unexpected data or is not in the expected JSON format, how would you handle such a situation in your code?
+### How would you handle exceptions and errors that may occur during the process of making API requests or interacting with the SQL database?
+
+1. Handling API Request Errors
+
+TRY-EXCEPT BLOCKS - Use Try-Except Blocks to wrap API request code to catch and handle exceptions. This prevents the entire program from crashing in case of errors
+
+Python - 'try-except'
+Ruby - 'begin-rescue'
+
+HANDLE SPECIFIC EXCEPTIONS - Catch specific exceptions to handle different types of errors separately. You might want to handle connection errors differently from server-side errors.
+
+Python - 'requests.exceptions.RequestException'
+Ruby - 'Net::HTTPError'
+
+IMPLEMENT RETRY MECHANISMS - For transient errors, such as temporary network issues, you can implement a retry mechanism using loops and delay between retries
+
+LOG ERRORS - Use logging libraries to record error details and debugging information for future analysis
+
+2. Handling SQL Database Errors
+
+TRY-EXCEPT BLOCKS - See above
+
+HANDLE SPECIFIC EXCEPTIONS - Catch specific exceptions relevant to database operations to handle them appropiately
+
+e.g. PG:Error for Ruby, sqlite3.Error for Python, etc.
+
+CONNECTION CLOSURE - Close the database connection gracefully, ensuring it's closed regardless of success or failure
+
+Python - 'finaly' Block
+Ruby - 'ensure' Block
+
+TRANSACTION ROLLBACK - If using transactions, consider rolling back the transaction in the 'rescue' block(Ruby) or 'except' block(Python) to maintain data integrity
+
+LOG ERRORS - See above
+
+### What kind of data validation would you consider implementing when pulling data from the database and preparing it for the API request?
+
+### In case the API response contains unexpected data or is not in the expected JSON format, how would you handle such a situation in your code?
 
 # Security and Authentication
 
-If the API requires authentication, how would you pass the necessary credentials in the HTTP POST request headers?
-What security considerations would you keep in mind when interacting with a JSON API and a SQL database in your application?
+### If the API requires authentication, how would you pass the necessary credentials in the HTTP POST request headers?
+
+### What security considerations would you keep in mind when interacting with a JSON API and a SQL database in your application?
